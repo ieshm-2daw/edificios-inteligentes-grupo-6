@@ -36,7 +36,7 @@ Lista de librerías que deben instalarse desde el gestor de librerías:
 
 - Este código enciende y apaga un led del propio SP32 periódicamente.
 
-`#define LED_BUILTIN 2
+```cpp #define LED_BUILTIN 2
 
 void setup() {
   // El código introducido aquí se ejecuta al inicio
@@ -53,7 +53,8 @@ void loop() {
   digitalWrite(LED_BUILTIN, LOW);
   delay(2000);
 
-}`
+} 
+```
 
 ---
 
