@@ -60,17 +60,24 @@ void loop() {
 
 ## 4. Conexión de los Sensores
 
-### 4.1 Esquema de Conexión
+### 4.1 Uso de los Pines
 
-- Explica cómo conectar los sensores a la ESP32.
-- Incluye un diagrama visual (puedes usar Fritzing o dibujarlo).
+- Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros hemos utilizado una placa de desarrollo que facilita el uso de los pines al permitirnos atornillar las conexiones sin necesidad de soldar. Para ello, tan solo es necesario desatornillar el pin que queremos utilizar, introducir en el hueco el cable que vamos a conectar y volver a apretar el tornillo, fijando la conexión.
 
-### 4.2 Tabla de Pines
+### 4.2 Tabla de Pines para cada Dispositivo
 
-| Sensor          | Pin de Datos | Pin de Alimentación | Otros Pines |
-|------------------|--------------|---------------------|-------------|
-| **Sensor 1**    | GPIO XX      | 3.3V                | GND         |
-| **Sensor 2**    | GPIO XX      | 5V                  | GND         |
+| PIN            | Dispositivo  | Conexión | Uso           |
+|---------------|-------------|----------|--------------|
+| GND           | Relé        | GND      | Tierra       |
+| GPIO 26 (VP)  | Relé        | IN       | Comunicación |
+| 3.3V          | Relé        | VCC      | Alimentación |
+| GPIO 21       | Lector RFID | SDA      | Comunicación |
+| GPIO 18       | Lector RFID | SCK      | Comunicación |
+| GPIO 23       | Lector RFID | MOSI     | Comunicación |
+| GPIO 19       | Lector RFID | MISO     | Comunicación |
+| GND           | Lector RFID | GND      | Tierra       |
+| EN            | Lector RFID | RST      | Comunicación |
+| 3.3V          | Lector RFID | 3.3V     | Alimentación |
 
 ---
 
