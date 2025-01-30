@@ -4,7 +4,9 @@
 
 ## 1. Introducción
 
-En este tutorial aprenderemos a conectar diversos dispositivos para crear un entorno domótico en el que se maximizarán diversas áreas y optimizaremos procesos tales como la seguridad, eficiencia, comodidad y sostenibilidad.
+En este tutorial aprenderemos a conectar diversos dispositivos para crear un entorno domótico en el que se maximizarán diversas áreas y optimizaremos procesos tales como la **seguridad**, **eficiencia**, **comodidad** y **sostenibilidad**. Uno de los hitos más destacados en este proyecto es la **automatización del control de acceso** con **RFID** conectado a una **cerradura electrónica**, permitiendo un control de acceso seguro y eficiente. Además, hemos implementado un **control de sonido automatizado durante la noche**, lo que no solo mejora la comodidad del entorno, sino que también contribuye a la seguridad al evitar ruidos molestos o intrusos durante las horas no laborables.
+
+Estos avances son solo el principio de lo que podemos lograr con la integración de la tecnología en el ámbito educativo. La domótica es una herramienta clave para hacer que los espacios sean más inteligentes, adaptados a las necesidades y optimizados para una mejor gestión. ¡Acompáñanos a descubrir cómo hacerlo!
 
 ## 2. Materiales Necesarios
 
@@ -751,7 +753,7 @@ void loop() {
 
 ## 7. Aplicaciones domóticas
 
-## 7. Aplicaciones Domóticas: Cerradura Digital, Eficiencia y Seguridad
+## 7.1 Aplicaciones Domóticas: Cerradura Digital, Eficiencia y Seguridad
 
 En el mundo actual, la tecnología está transformando cada aspecto de nuestras vidas, y la educación no es la excepción. La automatización en el aula es un avance significativo que mejora la seguridad, la eficiencia y la comodidad de estudiantes y docentes.
 
