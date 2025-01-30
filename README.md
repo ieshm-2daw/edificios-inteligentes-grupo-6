@@ -592,7 +592,7 @@ void loop() {
 
 ---
 
-## 7. Pruebas y Verificación
+## 7. Aplicaciones
 
 ### 7.1 Verificación de la Conexión WiFi
 
