@@ -62,22 +62,28 @@ void loop() {
 
 ### 4.1 Uso de los Pines
 
-- Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros hemos utilizado una placa de desarrollo que facilita el uso de los pines al permitirnos atornillar las conexiones sin necesidad de soldar. Para ello, tan solo es necesario desatornillar el pin que queremos utilizar, introducir en el hueco el cable que vamos a conectar y volver a apretar el tornillo, fijando la conexión.
+Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros hemos utilizado una placa de desarrollo que facilita el uso de los pines al permitirnos atornillar las conexiones sin necesidad de soldar. Para ello, tan solo es necesario desatornillar el pin que queremos utilizar, introducir en el hueco el cable que vamos a conectar y volver a apretar el tornillo, fijando la conexión.
 
 ### 4.2 Tabla de Pines para cada Dispositivo
 
-| PIN            | Dispositivo  | Conexión | Uso           |
-|---------------|-------------|----------|--------------|
-| GND           | Relé        | GND      | Tierra       |
-| GPIO 26 (VP)  | Relé        | IN       | Comunicación |
-| 3.3V          | Relé        | VCC      | Alimentación |
-| GPIO 21       | Lector RFID | SDA      | Comunicación |
-| GPIO 18       | Lector RFID | SCK      | Comunicación |
-| GPIO 23       | Lector RFID | MOSI     | Comunicación |
-| GPIO 19       | Lector RFID | MISO     | Comunicación |
-| GND           | Lector RFID | GND      | Tierra       |
-| EN            | Lector RFID | RST      | Comunicación |
-| 3.3V          | Lector RFID | 3.3V     | Alimentación |
+#### Dispositivos:
+
+| PIN           | Dispositivo  | Conexión | Uso           |
+|--------------|-------------|----------|--------------|
+| GND          | Relé        | GND      | Tierra       |
+| GPIO 26 (VP) | Relé        | IN       | Comunicación |
+| 3.3V         | Relé        | VCC      | Alimentación |
+| GPIO 21      | RFID-RC522  | SDA      | Comunicación |
+| GPIO 18      | RFID-RC522  | SCK      | Comunicación |
+| GPIO 23      | RFID-RC522  | MOSI     | Comunicación |
+| GPIO 19      | RFID-RC522  | MISO     | Comunicación |
+| GND          | RFID-RC522  | GND      | Tierra       |
+| EN           | RFID-RC522  | RST      | Comunicación |
+| 3.3V         | RFID-RC522  | 3.3V     | Alimentación |
+| GND          | KY-038      | GND      | Tierra       |
+| 3.3V         | KY-038      | +        | Alimentación |
+| GPIO 27      | KY-038      | DO       | Comunicación |
+| GPIO 26      | KY-038      | AO       | Comunicación |
 
 ---
 
