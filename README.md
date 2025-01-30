@@ -780,20 +780,3 @@ Este avance en la automatización y la seguridad demuestra cómo la **domótica*
 La tecnología y la innovación no tienen límites. Con las cerraduras digitales y la automatización de las aulas, los estudiantes y profesores pueden disfrutar de un entorno de aprendizaje más seguro, eficiente y avanzado. El camino hacia la modernización educativa está marcado por estos avances, que están solo al alcance de nuestra imaginación. ¿Cómo será el aula del futuro? ¿Qué otras aplicaciones domóticas harán nuestra vida escolar más fácil y segura? El futuro de la domótica en el aula está lleno de posibilidades emocionantes y estamos solo al comienzo de este viaje.
 
 ---
-
-## 8. Ampliaciones y Mejoras
-
-- Ideas para expandir el proyecto, como agregar más sensores o actuar sobre los datos recibidos.
-
----
-
-## 9. Recursos y Enlaces de Interés
-
-- Enlaces a documentación oficial.
-- Recursos para aprender más sobre MQTT, ESP32 y Arduino.
-
----
-
-## 10. Licencia
-
-- Información sobre cómo otros pueden usar o modificar tu tutorial.
