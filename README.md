@@ -66,10 +66,14 @@ Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros 
 
 ### 4.2 Tabla de Pines para cada Dispositivo
 
-#### Dispositivos:
+#### Dispositivos
 
-| PIN           | Dispositivo  | Conexión | Uso           |
-|--------------|-------------|----------|--------------|
+Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros hemos utilizado una placa de desarrollo que facilita el uso de los pines al permitirnos atornillar las conexiones sin necesidad de soldar. Para ello, tan solo es necesario desatornillar el pin que queremos utilizar, introducir en el hueco el cable que vamos a conectar y volver a apretar el tornillo, fijando la conexión.
+
+### 4.1 Tabla de Pines
+
+| PIN          | Dispositivo | Conexión | Uso          |
+| ------------ | ----------- | -------- | ------------ |
 | GND          | Relé        | GND      | Tierra       |
 | GPIO 26 (VP) | Relé        | IN       | Comunicación |
 | 3.3V         | Relé        | VCC      | Alimentación |
@@ -84,12 +88,6 @@ Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros 
 | 3.3V         | KY-038      | +        | Alimentación |
 | GPIO 27      | KY-038      | DO       | Comunicación |
 | GPIO 26      | KY-038      | AO       | Comunicación |
-### 4.2 Tabla de Pines
-
-| Sensor       | Pin de Datos | Pin de Alimentación | Otros Pines |
-| ------------ | ------------ | ------------------- | ----------- |
-| **Sensor 1** | GPIO XX      | 3.3V                | GND         |
-| **Sensor 2** | GPIO XX      | 5V                  | GND         |
 
 ---
 
