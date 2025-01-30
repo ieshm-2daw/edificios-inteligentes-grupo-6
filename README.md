@@ -98,6 +98,8 @@ void loop() {
   - Haremos click en CREATE.
 - Hecho esto, cuando tengamos todo configurado y funcionando en nuestro Arduino IDE, al cambiar el estado del switch debería afectar directamente a nuestro relé.
 
+![Ejemplo Visual MQTT](ejemploVisualMQTT.png)
+
 ---
 
 ## 6. Código Arduino
