@@ -22,7 +22,7 @@ Lista de todo lo que necesitaremos:
 
 ### 3.1 Instalación del Arduino IDE
 
-- Descargaremos el IDE de Arduino pulsando [aquí](https://www.arduino.cc/en/software). 
+- Descargaremos el IDE de Arduino pulsando [aquí](https://www.arduino.cc/en/software).
 - En el proceso de instalación pasaremos páginas hasta intalarlo.
 
 ### 3.1 Creación del proyecto ESP32
@@ -31,9 +31,9 @@ Lista de todo lo que necesitaremos:
 - Puede que no esté habilitada en un inicio, por lo que antes deberemos elegir ESP32 Dev Board para posteriormente elegir la otra, que ya debería estar activa.
 - Hecho esto la configuración inicial del proyecto estaría completada, quedando como la imagen posterior.
 
-![Interfaz Inicial IDE](interfazInicioIDE.png)
+![Interfaz Inicial IDE](./images/interfazInicioIDE.png)
 
-### 3.2 Ejecución de un proyecto.
+### 3.2 Ejecución de un proyecto
 
 - Es esencial que a la hora de ejecutar nuestro proyecto tengamos conectada la ESP32 a nuestro ordenador, al menos por el momento. De esta forma, para ejecutar un proceso deberemos tener en cuenta lo siguiente:
   - Para poder ejecutar un proceso y que este pueda compilar correctamente, a la vez que pulsamos el botón correspondiente en nuestro programa (la flecha situada en la parte superior izquierda), también deberemos mantener pulsado un botón en nuestro ESP32 cercano al conector USB de nombre “boot”, hasta que el proceso haya sido exitoso.
@@ -127,7 +127,7 @@ En este caso usaremos Mosquitto Broker. Y nuestro principal objetivo será su po
   - Haremos click en CREATE.
 - Hecho esto, cuando tengamos todo configurado y funcionando en nuestro Arduino IDE, al cambiar el estado del switch debería afectar directamente a nuestro relé.
 
-![Ejemplo Visual MQTT](ejemploVisualMQTT.png)
+![Ejemplo Visual MQTT](./images/ejemploVisualMQTT.png)
 
 ---
 
@@ -218,7 +218,7 @@ void loop() {
 
 - Código que activa o desactiva el relé según mqtt
 
-![Conexión Relé](rele.png)
+![Conexión Relé](./images/rele.png)
 
 ```cpp
 #include <WiFi.h>
@@ -331,7 +331,7 @@ void loop() {
 
 - Código que enciende o apaga el relé según el nivel de ruido
 
-![Conexión del relé con el sensor de sonido](releSonido.png)
+![Conexión del relé con el sensor de sonido](./images/releSonido.png)
 
 ```cpp
 #include <WiFi.h>
@@ -573,7 +573,7 @@ void loop() {
 
 - Código que recoge información sobre el acceso al aula con el dispositivo RFID
 
-![Conexión con el RFID](rfid.png)
+![Conexión con el RFID](./images/rfid.png)
 
 ```cpp
 #include <WiFi.h>
