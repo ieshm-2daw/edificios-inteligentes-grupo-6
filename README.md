@@ -76,9 +76,9 @@ void loop() {
 
 ## 5. Configuración del MQTT
 
-  MQTT (Message Queuing Telemetry Transport) es un protocolo de comunicación ligero y eficiente, diseñado para la transmisión de mensajes en redes con ancho de banda limitado o conexiones inestables. Se basa en el modelo publicador/suscriptor, donde los dispositivos (clientes) se comunican a través de un broker central.
+MQTT (Message Queuing Telemetry Transport) es un protocolo de comunicación ligero y eficiente, diseñado para la transmisión de mensajes en redes con ancho de banda limitado o conexiones inestables. Se basa en el modelo publicador/suscriptor, donde los dispositivos (clientes) se comunican a través de un broker central.
 
-  En este caso usaremos Mosquitto Broker. Y nuestro principal objetivo será su posterior uso junto a Arduino IDE para ir modificando el estado de nuestro relé y que este trabaje según sea necesario.
+En este caso usaremos Mosquitto Broker. Y nuestro principal objetivo será su posterior uso junto a Arduino IDE para ir modificando el estado de nuestro relé y que este trabaje según sea necesario.
 
 ### Configuración del Broker MQTT
 
@@ -601,20 +601,35 @@ void loop() {
 
 ---
 
-## 7. Aplicaciones
+## 7. Aplicaciones domóticas
 
-### 7.1 Verificación de la Conexión WiFi
+## 7. Aplicaciones Domóticas: Cerradura Digital, Eficiencia y Seguridad
 
-- Cómo verificar que la ESP32 está conectada al WiFi.
+En el mundo actual, la tecnología está transformando cada aspecto de nuestras vidas, y la educación no es la excepción. La automatización en el aula es un avance significativo que mejora la seguridad, la eficiencia y la comodidad de estudiantes y docentes.
 
-### 7.2 Monitorización de Datos en el Broker MQTT
+### Cerradura Digital: La Seguridad del Futuro en el Aula
 
-- Cómo suscribirse a los tópicos usando herramientas como MQTT Explorer o `mosquitto_sub`.
+Una de las implementaciones más innovadoras en la domótica de las aulas es la **cerradura digital inteligente**. Este sistema proporciona un control absoluto sobre el acceso al aula, asegurando que solo las personas autorizadas puedan entrar. A través de una **aplicación móvil** o **tarjetas RFID**, los usuarios pueden acceder al aula de manera rápida y eficiente. Este avance no solo garantiza la seguridad de los recursos dentro del aula, sino que también ofrece un nivel de personalización que adapta el acceso a las necesidades de cada momento.
 
-### 7.3 Solución de Problemas Comunes
+### Eficiencia y Seguridad Combinados
 
-- Problemas de conexión WiFi.
-- Problemas al publicar datos.
+La seguridad es un pilar fundamental en cualquier entorno educativo. Las cerraduras digitales permiten gestionar quién entra y sale del aula, eliminando la necesidad de llaves físicas que pueden ser fácilmente perdidas o copiadas. Gracias a su integración con sistemas domóticos más amplios, las cerraduras pueden estar conectadas a otras aplicaciones del aula, como sistemas de cámaras de vigilancia, alarmas, y monitoreo de actividad en tiempo real.
+
+Este sistema puede ser programado para permitir el acceso a diferentes usuarios en horarios específicos, asegurando un control total sobre el uso del aula. Además, la posibilidad de registrar la entrada y salida de personas se convierte en una herramienta valiosa para la gestión administrativa y la mejora continua del proceso educativo.
+
+### La Automatización: El Futuro del Aula Inteligente
+
+La automatización, combinada con la domótica, está llevando la seguridad y la eficiencia en el aula a nuevos niveles. Con cerraduras digitales y otros sistemas automatizados, se abre un abanico de posibilidades para mejorar no solo la seguridad, sino también la experiencia de los estudiantes y profesores. Imagina un aula donde las luces, la temperatura y las cerraduras se ajustan automáticamente en función de la presencia de personas, el horario o el clima. La eficiencia energética se optimiza sin que nadie tenga que preocuparse por apagar luces o regular el aire acondicionado.
+
+En el futuro, el aula podrá convertirse en un entorno completamente automatizado, donde las cerraduras digitales no solo garantizarán la seguridad, sino que estarán integradas en un sistema de gestión inteligente que mejorará todos los aspectos de la vida escolar.
+
+### Un Gran Avance en la Domótica del Aula
+
+Este avance en la automatización y la seguridad demuestra cómo la **domótica** está mejorando la forma en que interactuamos con nuestros entornos. La implementación de **cerraduras digitales** en el aula no solo optimiza la seguridad, sino que también abre la puerta a un futuro más eficiente y organizado. En este contexto, la figura de la **automatización** juega un papel crucial, transformando el aula en un espacio más seguro, accesible y preparado para los desafíos del futuro.
+
+### El Futuro es Ahora
+
+La tecnología y la innovación no tienen límites. Con las cerraduras digitales y la automatización de las aulas, los estudiantes y profesores pueden disfrutar de un entorno de aprendizaje más seguro, eficiente y avanzado. El camino hacia la modernización educativa está marcado por estos avances, que están solo al alcance de nuestra imaginación. ¿Cómo será el aula del futuro? ¿Qué otras aplicaciones domóticas harán nuestra vida escolar más fácil y segura? El futuro de la domótica en el aula está lleno de posibilidades emocionantes y estamos solo al comienzo de este viaje.
 
 ---
 
