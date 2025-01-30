@@ -4,16 +4,16 @@
 
 ## 1. Introducción
 
-En este tutorial aprenderemos a conectar diversos dispositivos para crear un entorno domótico en el que se maximizan diversas áreas y optimizan procesos tales como la seguridad, eficiencia , comodidad y sostenible.
+En este tutorial aprenderemos a conectar diversos dispositivos para crear un entorno domótico en el que se maximizarán diversas áreas y optimizaremos procesos tales como la seguridad, eficiencia, comodidad y sostenibilidad.
 
 ## 2. Materiales Necesarios
 
-Lista de todo lo que necesitaréis:
+Lista de todo lo que necesitaremos:
 
 - ESP32.
-- Sensores (en este caso emplearemos un relé digital , un sensor KY-038 (sonido) , una cerradura electrónica).
+- Sensores (en este caso emplearemos un relé digital, un sensor KY-038 (sensor de sonido) y una cerradura electrónica).
 - Protoboard y cables.
-- Software: Arduino IDE, broker MQTT (p.ej., Mosquitto), etc.
+- Software: Arduino IDE, broker MQTT (p.ej., Mosquitto Broker).
 - Ordenador con conexión a Internet.
 
 ---
@@ -22,15 +22,27 @@ Lista de todo lo que necesitaréis:
 
 ### 3.1 Instalación del Arduino IDE
 
-- Descargar el IDE de Arduino.
-- Dentro de la interfaz debemos seleccionar la ESP32 Dev module.
+- Descargaremos el IDE de Arduino pulsando [aquí](https://www.arduino.cc/en/software). 
+- En el proceso de instalación pasaremos páginas hasta intalarlo.
 
-### 3.2 Instalación de Librerías Necesarias
+### 3.1 Creación del proyecto ESP32
 
-Lista de librerías que deben instalarse desde el gestor de librerías:
+- Dentro de la interfaz debemos seleccionar la board de ESP32 Dev module.
+- Puede que no esté habilitada en un inicio, por lo que antes deberemos elegir ESP32 Dev Board para posteriormente elegir la otra, que ya debería estar activa.
+- Hecho esto la configuración inicial del proyecto estaría completada, quedando como la imagen posterior.
+
+![Interfaz Inicial IDE](interfazInicioIDE.png)
+
+### 3.2 Ejecución de un proyecto.
+
+- Es esencial que a la hora de ejecutar nuestro proyecto tengamos conectada la ESP32 a nuestro ordenador, al menos por el momento. De esta forma, para ejecutar un proceso deberemos tener en cuenta lo siguiente:
+  - Para poder ejecutar un proceso y que este pueda compilar correctamente, a la vez que pulsamos el botón correspondiente en nuestro programa (la flecha situada en la parte superior izquierda), también deberemos mantener pulsado un botón en nuestro ESP32 cercano al conector USB de nombre “boot”, hasta que el proceso haya sido exitoso.
+
+### 3.3 Instalación de Librerías Necesarias
+
+Librerías que deben instalarse desde el gestor de librerías:
 
 - `PubSubClient` (para MQTT).
-- Librerías específicas.
 
 ### Código de prueba en arduino
 
@@ -189,6 +201,8 @@ void loop() {
 
 - Código que activa o desactiva el relé según mqtt
 
+![Conexión Relé](rele.png)
+
 ```cpp
 #include <WiFi.h>
 #include <PubSubClient.h>
@@ -299,6 +313,8 @@ void loop() {
 ```
 
 - Código que enciende o apaga el relé según el nivel de ruido
+
+![Conexión del relé con el sensor de sonido](releSonido.png)
 
 ```cpp
 #include <WiFi.h>
@@ -426,6 +442,8 @@ void loop() {
 ```
 
 - Código que recoge información sobre el acceso al aula con el dispositivo RFID
+
+![Conexión con el RFID](rfid.png)
 
 ```cpp
 #include <WiFi.h>
