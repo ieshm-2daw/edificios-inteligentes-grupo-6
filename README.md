@@ -22,8 +22,8 @@ Lista de todo lo que necesitaréis:
 
 ### 3.1 Instalación del Arduino IDE
 
-- Descargar el ID de Arduino.
-- Dentro de la interfaz debemos seleccionar la Sp32 Dev module.
+- Descargar el IDE de Arduino.
+- Dentro de la interfaz debemos seleccionar la ESP32 Dev module.
 
 ### 3.2 Instalación de Librerías Necesarias
 
@@ -76,15 +76,27 @@ void loop() {
 
 ## 5. Configuración del MQTT
 
-### 5.1 Configuración del Broker MQTT
+  MQTT (Message Queuing Telemetry Transport) es un protocolo de comunicación ligero y eficiente, diseñado para la transmisión de mensajes en redes con ancho de banda limitado o conexiones inestables. Se basa en el modelo publicador/suscriptor, donde los dispositivos (clientes) se comunican a través de un broker central.
 
-- Explicación breve sobre el broker MQTT.
-- Instalación y configuración de Mosquitto (u otra opción).
+  En este caso usaremos Mosquitto Broker. Y nuestro principal objetivo será su posterior uso junto a Arduino IDE para ir modificando el estado de nuestro relé y que este trabaje según sea necesario.
 
-### 5.2 Configuración de la ESP32
+### Configuración del Broker MQTT
 
-- Cómo definir la conexión al WiFi.
-- Configuración del cliente MQTT en el código.
+- Instalamos IoT MQTT Panel.
+- Añadimos una nueva conexión.
+- En las credenciales necesarias para conectarnos pondremos los siguientes datos:
+  - Connection name: Cualquiera, el que mejor se adapte a nuestro proyecto.
+  - Broker Web/IP address: La de nuestro servidor.
+  - Add Dashboard: Hace falta añadir uno. Poner el nombre deseado.
+  - En "Additional options" añadiremos nuestro username y password.
+  - Terminaremos el proceso haciendo click en CREATE.
+- En este caso, usaremos MQTT para activar y desactivar el relé asociado, por lo que dentro de nuestra conexión añadiremos un Switch.
+- Este switch tendrá de configuración:
+  - Panel name: Lo que buscará, es decir, relé.
+  - Payload on: ON
+  - Payload off: OFF
+  - Haremos click en CREATE.
+- Hecho esto, cuando tengamos todo configurado y funcionando en nuestro Arduino IDE, al cambiar el estado del switch debería afectar directamente a nuestro relé.
 
 ---
 
