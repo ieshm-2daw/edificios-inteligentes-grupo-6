@@ -44,11 +44,12 @@ Lista de todo lo que necesitaremos:
 
 Librerías que deben instalarse desde el gestor de librerías:
 
-- `PubSubClient` (para MQTT).
+- `PubSubClient` (para habilitar a conexión con MQTT).
+- `MFRC522` (para habilitar la conexión del lector RFID RC522).
 
 ### Código de prueba en arduino
 
-- Este código enciende y apaga un led del propio SP32 periódicamente.
+- Este código enciende y apaga un led del propio ESP32 periódicamente.
 
 ```cpp #define LED_BUILTIN 2
 
