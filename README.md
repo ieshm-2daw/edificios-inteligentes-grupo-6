@@ -160,8 +160,8 @@ Este código configura la conexión **WiFi** y el cliente **MQTT**
 #include <PubSubClient.h>
 
 //Configura aquí tu SSID y tu contraseña de la red
-const char* ssid = "2DAW_IoT";
-const char* password = "Somos2DAW";
+const char* ssid = secrets.SSID;
+const char* password = secrets.password;
 
 //Configura aquí tu servidor de mqtt, puerto contraseña y topic de comunicación que usaremos más adelante
 const char* mqtt_server = "ha.ieshm.org";
@@ -228,8 +228,8 @@ void loop() {
 #include <PubSubClient.h>
 
 
-const char* ssid = "2DAW_IoT";
-const char* password = "Somos2DAW";
+const char* ssid = secrets.SSID;
+const char* password = secrets.password;
 
 
 const char* mqtt_server = "ha.ieshm.org";
@@ -341,8 +341,8 @@ void loop() {
 #include <PubSubClient.h>
 
 
-const char* ssid = "2DAW_IoT";
-const char* password = "Somos2DAW";
+const char* ssid = secrets.SSID;
+const char* password = secrets.password;
 
 
 const char* mqtt_server = "ha.ieshm.org";
@@ -469,8 +469,8 @@ void loop() {
 
 // Es el mismo código del rele ya que activa y desactiva el mismo para abrir o cerrar la cerradura
 
-const char* ssid = "2DAW_IoT";
-const char* password = "Somos2DAW";
+const char* ssid = secrets.SSID;
+const char* password = secrets.password;
 
 
 const char* mqtt_server = "ha.ieshm.org";
@@ -585,8 +585,8 @@ void loop() {
 #include <MFRC522.h>
 
 
-const char* ssid = "2DAW_IoT";
-const char* password = "Somos2DAW";
+const char* ssid = secrets.SSID;
+const char* password = secrets.password;
 
 
 const char* mqtt_server = "ha.ieshm.org";
