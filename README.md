@@ -81,12 +81,6 @@ Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros 
 
 ### 4.2 Tabla de Pines para cada Dispositivo
 
-#### Dispositivos
-
-Para realizar conexiones con nuestros pines de la placa ESP32 Wroom 32 nosotros hemos utilizado una placa de desarrollo que facilita el uso de los pines al permitirnos atornillar las conexiones sin necesidad de soldar. Para ello, tan solo es necesario desatornillar el pin que queremos utilizar, introducir en el hueco el cable que vamos a conectar y volver a apretar el tornillo, fijando la conexión.
-
-### 4.1 Tabla de Pines
-
 | PIN          | Dispositivo | Conexión | Uso          |
 | ------------ | ----------- | -------- | ------------ |
 | GND          | Relé        | GND      | Tierra       |
@@ -112,7 +106,25 @@ MQTT (Message Queuing Telemetry Transport) es un protocolo de comunicación lige
 
 En este caso usaremos Mosquitto Broker. Y nuestro principal objetivo será su posterior uso junto a Arduino IDE para ir modificando el estado de nuestro relé y que este trabaje según sea necesario.
 
-### Configuración del Broker MQTT
+Este será configurado desde dos perspectivas. Por la parte del servidor y por la del cliente.
+
+### 5.1 Configuración del Broker MQTT para el servidor.
+
+Este podrá ser configurado de varias maneras. Al haber trabajado con Home Assistant en otras ocasiones, nosotros decidimos hacerlo gracias a esto. Así, entraremos en nuestro HA y seguiremos los siguientes pasos:
+
+- Instalamos en la pestaña Complementos de Ajustes la extensión de Mosquitto Broker:
+
+![Ejemplo Visual MQTT en Complementos](./images/ejemploVisualMQTTcomplementos.png)
+
+- En la ruta Ajustes > Dispositivos y Servicios > MQTT, crearemos una Entrada de integración y la configuraremos presentando un Topic de escucha.
+
+![Ejemplo Visual MQTT en Dispositivos y servicios](./images/ejemploVisualMQTTservicios.png)
+
+- Finalmente, en la ruta Ajustes > Personas, añadiremos una nueva. Quedando como en la imagen posterior.
+
+![Ejemplo Visual HA persona](./images/ejemploVisualHApersona.png)
+
+### 5.2 Configuración del Broker MQTT para el cliente.
 
 - Instalamos IoT MQTT Panel.
 - Añadimos una nueva conexión.
@@ -120,7 +132,7 @@ En este caso usaremos Mosquitto Broker. Y nuestro principal objetivo será su po
   - Connection name: Cualquiera, el que mejor se adapte a nuestro proyecto.
   - Broker Web/IP address: La de nuestro servidor.
   - Add Dashboard: Hace falta añadir uno. Poner el nombre deseado.
-  - En "Additional options" añadiremos nuestro username y password.
+  - En "Additional options" añadiremos nuestro username y password, los de la persona creada en Home Assistant.
   - Terminaremos el proceso haciendo click en CREATE.
 - En este caso, usaremos MQTT para activar y desactivar el relé asociado, por lo que dentro de nuestra conexión añadiremos un Switch.
 - Este switch tendrá de configuración:
