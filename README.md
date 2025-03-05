@@ -871,6 +871,171 @@ Las automatizaciones se realizaron directamente a través de la interfaz de Home
 
 El sensor de sonido KY-038 se ha configurado para detectar niveles de ruido inusuales y enviar alertas a través del protocolo MQTT cuando se superan ciertos umbrales. Estas alertas pueden activar diferentes acciones en Home Assistant, como notificaciones móviles o activación de dispositivos de seguridad.
 
+Para esto, en nuestro ESP32, implementaremos el siguiente código en el archivo .yaml.
+
+### Código para controlarlo
+
+```yaml
+esphome:
+  name: rfidg6
+  friendly_name: RFIDG6
+
+http_request:
+  verify_ssl: false
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "0g7gq5yUFNFJg+BGxLMBHEl0FBXWv9z08noPz0pqlTk="
+
+ota:
+  - platform: esphome
+    password: "562ddea7f1843c6964834a1ad0a938a6"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Rfidg6 Fallback Hotspot"
+    password: "xbCnKOzj0afM"
+
+# Example configuration entry
+mqtt:
+  broker: ha.ieshm.org
+  port: 1883
+  username: "mqtt"
+  password: "mqtt"
+
+# Configuración del sensor de sonido
+binary_sensor:
+  - platform: gpio
+    pin: GPIO27  # Pin conectado al DO del KY-038
+    name: "Micrófono Digital KY-038"
+    id: microphone_sensor
+    device_class: sound
+    on_state:
+      - http_request.post:
+          url: "http://192.168.4.206:8086/write?db=ieshm-038&u=2daw&p=password123"
+          headers:
+            Content-Type: "application/x-www-form-urlencoded"
+          body: "sonido,sensor=microfono value=1"
+      - logger.log: "Sonido detectado"
+    on_release:
+      - http_request.post:
+          url: "http://192.168.4.206:8086/write?db=SensorKY-038&u=honeassistant&p=password123"
+          headers:
+            Content-Type: "application/x-www-form-urlencoded"
+          body: "sonido,sensor=microfono value=0"
+      - logger.log: "No hay sonido detectado"
+
+# Variables globales utilizadas en el código
+globals:
+  - id: esphome_sensitivity  # Sensibilidad del sensor de sonido
+    type: float
+    initial_value: '36.5'  # Valor inicial de la sensibilidad
+    restore_value: yes  # Mantiene el valor después de reinicios
+
+  - id: esphome_volume  # Variable para almacenar el volumen en crudo
+    type: int
+
+# Definición del sensor de sonido analógico
+sensor:
+  - platform: adc  # Usa el ADC (convertidor analógico-digital)
+    pin: GPIO36  # Pin analógico donde está conectado el micrófono
+    id: esphome_db
+    device_class: signal_strength  # Indica que mide la fuerza de una señal
+    name: "Db SoundEsp"  # Nombre del sensor en Home Assistant
+    icon: "mdi:volume-vibrate"  # Ícono en la interfaz
+    unit_of_measurement: "db"  # Unidad de medida: decibeles (dB)
+    update_interval: 3s  # Se actualiza cada 5 segundos
+    raw: true  # Usa los valores en crudo del ADC
+    filters:
+      - lambda: |-
+          unsigned int sample;
+          unsigned long startMillis= millis(); 
+          float peakToPeak = 0; 
+          unsigned int signalMax = 0;
+          unsigned int signalMin = 1024;
+          
+          // Captura la señal durante 300ms
+          while (millis() - startMillis < 300) {
+            sample = analogRead(A0);
+            if (sample < 1024){
+                if (sample > signalMax){
+                    signalMax = sample;
+                }
+                else if (sample < signalMin){
+                    signalMin = sample;
+                }
+              }
+          }
+          
+          // Calcula el valor pico a pico
+          peakToPeak = map((signalMax - signalMin),1,1024,1.5,1024);
+          id(esphome_volume) = peakToPeak;
+          
+          // Convierte el valor en decibeles
+          float state = id(esphome_sensitivity)*log10(peakToPeak)+15;  
+          return(state);
+    on_value:
+      then:
+        - mqtt.publish:
+            topic: "ieshm/2daw/sensor/sonido"
+            payload: !lambda |-
+              return to_string(id(esphome_db).state);
+
+  # Sensor para mostrar el volumen en porcentaje
+  - platform: template
+    name: "Volume SoundEsp"
+    icon: "mdi:volume-high"
+    unit_of_measurement: "%"
+    update_interval: 3s
+    lambda: |-
+      float raw_value = id(esphome_db).state;
+
+      // Ignore invalid values
+      if (isnan(raw_value) || raw_value <= 0) {
+        return {};  // Keeps the previous value
+      }
+
+      return map(raw_value, 0, 110, 0, 100);
+```
+### Implementación en Home Assistant
+
+En este caso, queremos realizar dos automatizaciones, una basada en la búsqueda de seguridad para cuando la clase se encuentre vacía en horario nocturno, y otra para regular el nivel de ruido en horario lectivo.
+
+Para ello crearemos dos nuevas automatizaciones: "Ruido Nocturno" y "Ruido Clase".
+
+La primera se encargará de lo siguiente:
+
+ - Cuando se supera un 10% del valor máximo que recoge el sensor, entre las 00:00 y las 8:00 am, envía una notificación mediante MQTT para avisar de esta discrepancia.
+
+![Automatización: Ruido Nocturno 1](./images/RuidoNocturno1.png)
+
+![Automatización: Ruido Nocturno 2](./images/RuidoNocturno2.png)
+
+![Automatización: Ruido Nocturno 3](./images/RuidoNocturno3.png)
+
+La segunda se encargará de lo siguiente:
+
+ - Cuando se supera un 75% del valor máximo que recoge el sensor, entre las 8:00 y las 15:00 pm, envía una notificación mediante MQTT para avisar de que se ha superado un volumen que puede perjudicar al desarrollo de la clase.
+
+![Automatización: Ruido Clase 1](./images/RuidoClase1.png)
+
+![Automatización: Ruido Clase 2](./images/RuidoClase2.png)
+
+![Automatización: Ruido Clase 3](./images/RuidoClase3.png)
+
 ## 7.3. Dashboard centralizado
 
 A continuación se muestra el dashboard que hemos implementado en Home Assistant, donde se centralizan todas las mediciones y controles:
