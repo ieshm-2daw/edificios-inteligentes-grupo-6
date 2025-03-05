@@ -1042,6 +1042,10 @@ A continuación se muestra el dashboard que hemos implementado en Home Assistant
 
 ![Dashboard de HomeAssistant](./images/resultadoAutomatizacion.jpg)
 
+![Explicación automatización seguridad](./sensorRFID.mp4)
+
+![Explicación impresora 3d](./impresora3D.mp4)
+
 Este panel muestra el estado de todos los sensores y permite controlar los dispositivos de forma centralizada, ofreciendo una visión completa del estado del aula inteligente.
 
 ---
