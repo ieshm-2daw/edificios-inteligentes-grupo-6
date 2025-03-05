@@ -766,7 +766,7 @@ void loop() {
 
 ## 7. Implementación de la domótica a Home Assistant
 
-En esta sección, adjuntaremos el código y los cambios realizados en nuestro servicio de Home Assistant abordando tanto el trabajo realizado para la activación de la cerradura mediante el lector de tarjetas RFID y la configuración realizada para el funcionamiento del sensor de sonido KY-038 y el envío de alertas en base a factores del mismo.
+En esta sección, adjuntaremos el código y los cambios realizados en nuestro servicio de Home Assistant abordando tanto el trabajo realizado para la activación de la cerradura mediante el lector de tarjetas RFID como la configuración realizada para el funcionamiento del sensor de sonido KY-038 y el envío de alertas definidas en las automatizaciones del propio Home Assistant.
 
 ## 7.1. Cerradura con RFID.
 
