@@ -768,13 +768,116 @@ void loop() {
 
 En esta sección, adjuntaremos el código y los cambios realizados en nuestro servicio de Home Assistant abordando tanto el trabajo realizado para la activación de la cerradura mediante el lector de tarjetas RFID como la configuración realizada para el funcionamiento del sensor de sonido KY-038 y el envío de alertas definidas en las automatizaciones del propio Home Assistant.
 
-## 7.1. Cerradura con RFID.
+## 7.1. Cerradura con RFID
 
-A
+Hemos realizado un conjunto de automatizaciones para controlar la seguridad en el aula. Usamos una cerradura electrónica conectada a un relé que se activa por el acceso del sensor RFID o por la acción sobre el botón del dashboard de la app del administrador. Para ello hemos usado la tecnología MQTT explicada anteriormente en este tutorial.
 
-## 7.2. Sensor KY-038 y alertas MQTT.
+### Código para controlarlo
 
-A
+```yaml
+esphome:
+  name: rfid-g3
+  friendly_name: RFID-G3
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "sbj0ASWHXh3ogyZBjE3ohlU6s2X+gVY/QZYJB2OD1Wo="
+
+ota:
+  - platform: esphome
+    password: "772dbfd725b252b2b830991a3dc69714"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Rfid-G3 Fallback Hotspot"
+    password: "9Pq6ZEL0uxuP"
+
+# Example configuration entry
+mqtt:
+  broker: ha.ieshm.org
+  port: 1883
+  username: mqtt
+  password: mqtt
+
+  on_message:
+    - topic: "ieshm/2daw/activador/rele"
+      payload: "ON"
+      then:
+        - switch.turn_on: relay
+
+    - topic: "ieshm/2daw/activador/rele"
+      payload: "OFF"
+      then:
+        - switch.turn_off: relay
+
+captive_portal:
+
+spi:
+  clk_pin: GPIO18
+  mosi_pin: GPIO23
+  miso_pin: GPIO19
+rc522_spi:
+  cs_pin: GPIO21
+  on_tag:
+    then:
+      - mqtt.publish:
+          topic: ieshm/2daw/sensor/rfid
+          payload: !lambda "return x;"
+
+switch:
+  - platform: gpio
+    name: "Relay Control"
+    pin: GPIO26
+    id: relay
+
+binary_sensor:
+  - platform: rc522
+    uid: B3-48-A7-FA
+    name: "RC522 RFID Tag"
+```
+
+### Implementación en Home Assistant
+
+Las automatizaciones se realizaron directamente a través de la interfaz de Home Assistant:
+
+#### Condiciones para la activación del relé
+
+![Establecer condición de acción para encenderlo](./images/automatizacionRFID1.jpg)
+
+![Establecer condición de acción para apagarlo](./images/automatizacionRFID2.jpg)
+
+#### Configuración de comunicación MQTT
+
+![Configuración para recibir mensaje de MQTT](./images/automatizacionRFIDMQTT1.jpg)
+
+![Configuración para procesar mensaje de MQTT](./images/automatizacionRFIDMQTT2.jpg)
+
+![Conexión con el RFID](./images/automatizacionRFID3.jpg)
+
+## 7.2. Sensor KY-038 y alertas MQTT
+
+El sensor de sonido KY-038 se ha configurado para detectar niveles de ruido inusuales y enviar alertas a través del protocolo MQTT cuando se superan ciertos umbrales. Estas alertas pueden activar diferentes acciones en Home Assistant, como notificaciones móviles o activación de dispositivos de seguridad.
+
+## 7.3. Dashboard centralizado
+
+A continuación se muestra el dashboard que hemos implementado en Home Assistant, donde se centralizan todas las mediciones y controles:
+
+![Dashboard de HomeAssistant](./images/resultadoAutomatizacion.jpg)
+
+Este panel muestra el estado de todos los sensores y permite controlar los dispositivos de forma centralizada, ofreciendo una visión completa del estado del aula inteligente.
 
 ---
 
