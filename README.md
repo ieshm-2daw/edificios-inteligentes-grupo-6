@@ -764,9 +764,23 @@ void loop() {
 
 ---
 
-## 7. Aplicaciones domóticas
+## 7. Implementación de la domótica a Home Assistant
 
-## 7.1 Aplicaciones Domóticas: Cerradura Digital, Eficiencia y Seguridad
+En esta sección, adjuntaremos el código y los cambios realizados en nuestro servicio de Home Assistant abordando tanto el trabajo realizado para la activación de la cerradura mediante el lector de tarjetas RFID y la configuración realizada para el funcionamiento del sensor de sonido KY-038 y el envío de alertas en base a factores del mismo.
+
+## 7.1. Cerradura con RFID.
+
+A
+
+## 7.2. Sensor KY-038 y alertas MQTT.
+
+A
+
+---
+
+## 8. Aplicaciones domóticas
+
+## 8.1 Aplicaciones Domóticas: Cerradura Digital, Eficiencia y Seguridad
 
 En el mundo actual, la tecnología está transformando cada aspecto de nuestras vidas, y la educación no es la excepción. La automatización en el aula es un avance significativo que mejora la seguridad, la eficiencia y la comodidad de estudiantes y docentes.
 
